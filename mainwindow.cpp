@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "QLabel"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -8,6 +9,19 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->pushButton, SIGNAL(clicked(bool)), this, SLOT(clicked(bool)));
+    ui->tableWidget->setColumnCount(2);
+    ui->tableWidget->setRowCount(5);
+    QLabel *lab = new QLabel();
+    lab->setText("aaa");
+    ui->tableWidget->setCellWidget(0,0, lab);
+
+    ui->comboBox->addItem("1");
+    ui->comboBox->addItem("2");
+    ui->comboBox->addItem("3");
+    ui->comboBox->addItem("*");
+    ui->comboBox->setCurrentIndex(3);
+
+    ui->tableWidget->setCellWidget(0,1, ui->comboBox);
 }
 
 MainWindow::~MainWindow()
